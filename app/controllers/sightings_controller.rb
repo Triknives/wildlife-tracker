@@ -1,0 +1,7 @@
+class SightingsController < ApplicationController
+
+
+
+
+
+end
