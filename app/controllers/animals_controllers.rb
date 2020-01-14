@@ -1,9 +1,0 @@
-class AnimalController < ApplicationController
-
-
-
-
-
-
-
-end

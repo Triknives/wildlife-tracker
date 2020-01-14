@@ -1,0 +1,40 @@
+<h1><%= @animal.name %></h1>
+
+<% if @animal.sightings.any? %>
+  <h4>Here are the sighting for this animal:</h4>
+
+  <%= form_tag animal_path, :method => 'get'  do %>
+    <%= date_field_tag :search, params[:search]%>
+    <%= submit_tag "Search", :name => nil  %>
+  <% end %>
+
+
+  <% if params[:search] %>
+  <%sightings = @animal.sightings.where(:time == params[:search]) %>
+<ul>
+
+<% sightings.each do |sighting| %>
+<li>  <%= link_to sighting.location, animal_sighting_path(@animal, sighting) %></li>
+<%end%>
+</ul>
+  <% else %>
+  <% @animal.sightings.each do |sighting| %>
+    <ul>
+      <li>
+        <%= link_to sighting.location, animal_sighting_path(@animal, sighting) %>
+      </li>
+    </ul>
+  <% end %>
+  <% end %>
+<% else %>
+  <p>No sighting are listed for this animal.</p>
+<% end %>
+
+<p><%= link_to "Add a sighting", new_animal_sighting_path(@animal) %></p>
+
+<p><%= link_to "Edit", edit_animal_path(@animal) %></p>
+<p><%= link_to "Delete animal", animal_path(@animal),
+                        :data => {:confirm => "Are you sure?",
+                                       :method => "delete"} %></p>
+
+<p><%= link_to "Return to animals", animals_path %></p>

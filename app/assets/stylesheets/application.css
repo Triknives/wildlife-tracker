@@ -13,3 +13,14 @@
  *= require_tree .
  *= require_self
  */
+ body {
+   background-image: linear-gradient(#345830 1%, #ECE4B7);
+   background-repeat: no-repeat;
+   background-attachment: fixed;
+  background-size: cover;
+  color: #ECE4B7;
+  font-weight: 700
+ }
+a {
+  color :#1A1F16;
+}

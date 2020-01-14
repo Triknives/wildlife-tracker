@@ -1,0 +1,9 @@
+<h1>Add a new sighting:</h1>
+
+<%= form_for [@animal, @sighting] do |f| %>
+<%= f.label :location%>
+<%= f.select :location, ['Mountain', 'Plain', 'Desert', 'Hill', 'Forrest', 'Jungle']%>
+<%= f.label :time%>
+<%= f.date_field :time %>
+<p><%= f.submit %></p>
+<% end %>

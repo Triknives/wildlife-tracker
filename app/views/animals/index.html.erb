@@ -1,0 +1,20 @@
+<h1>Animal</h1>
+<h4>Search for animal</h4>
+
+<%= form_tag animals_path, :method => 'get'  do %>
+  <%= text_field_tag :search, params[:search]%>
+  <%= submit_tag "Search", :name => nil  %>
+<% end %>
+
+<% if @animals.any? %>
+  <ul>
+    <% @animals.each do |animal| %>
+      <li><%= link_to animal.name, animal_path(animal) %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>There are no animals yet.</p>
+<% end %>
+
+
+<p><%= link_to "Create new animal", new_animal_path %></p>
